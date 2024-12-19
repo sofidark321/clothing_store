@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "966407046437",
+    "project_id": "clothing-app-1a164",
+    "storage_bucket": "clothing-app-1a164.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966407046437:android:d7b4e6764d8f579074c6cc",
+        "android_client_info": {
+          "package_name": "com.jouida.clothing_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj1zlklLitQN9EL1wEJ8hHlhyYxN8E75M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
