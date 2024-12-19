@@ -1,11 +1,10 @@
 
 plugins {
     id "com.android.application"
+    id 'com.google.gms.google-services'
     id "kotlin-android" 
-    id 'org.jetbrains.kotlin.jvm' version '1.8.22'
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
-    id 'com.google.gms.google-services'
    
    
 }
@@ -13,7 +12,7 @@ plugins {
 android {
     namespace = "com.jouida.clothing_store"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "25.1.8937393"
 
     compileOptions {
           sourceCompatibility JavaVersion.VERSION_11

@@ -1,6 +1,1 @@
-{
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  }
-}
+{"firestore":{"rules":"firestore.rules","indexes":"firestore.indexes.json"},"flutter":{"platforms":{"android":{"default":{"projectId":"clothing-app-1a164","appId":"1:966407046437:android:d7b4e6764d8f579074c6cc","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"clothing-app-1a164","configurations":{"android":"1:966407046437:android:d7b4e6764d8f579074c6cc","ios":"1:966407046437:ios:6fe0b4d0d38eb92f74c6cc","macos":"1:966407046437:ios:6fe0b4d0d38eb92f74c6cc","web":"1:966407046437:web:58727d1afe21121574c6cc","windows":"1:966407046437:web:47037f8521aca31374c6cc"}}}}}}

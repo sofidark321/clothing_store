@@ -1,5 +1,6 @@
 class UserModel {
-  final String login;
+  String? id;
+  String login;
   String password;
   DateTime? birthday;
   String? address;
@@ -13,6 +14,7 @@ class UserModel {
     this.address,
     this.postalCode,
     this.city,
+    this.id,
   });
 
   Map<String, dynamic> toMap() {
@@ -23,6 +25,7 @@ class UserModel {
       'address': address,
       'postalCode': postalCode,
       'city': city,
+      'id': id,
     };
   }
 
@@ -34,6 +37,7 @@ class UserModel {
       address: map['address'],
       postalCode: map['postalCode'],
       city: map['city'],
+      id: map['id'],
     );
   }
 }

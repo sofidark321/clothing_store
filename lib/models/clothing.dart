@@ -31,13 +31,13 @@ class Clothing {
 
   factory Clothing.fromMap(Map<String, dynamic> map) {
     return Clothing(
-      id: map['id'],
-      title: map['title'],
-      imageUrl: map['imageUrl'],
-      size: map['size'],
-      price: map['price'].toDouble(),
-      category: map['category'],
-      brand: map['brand'],
+      id: map['id'] ?? '',
+      title: map['title'] ?? '',
+      imageUrl: map['imageUrl'] ?? '',
+      size: map['size'] ?? '',
+      price: map['price']?.toDouble() ?? 0.0,
+      category: map['category'] ?? '',
+      brand: map['brand'] ?? '',
     );
   }
 }
