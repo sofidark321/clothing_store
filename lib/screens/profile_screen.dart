@@ -176,7 +176,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: _saveProfile, // Correction du bug : suppression des {}
-                    child: const Text('Save Changes'),
+                    child: const Text('Valider'),
                   ),
                 ],
               ),

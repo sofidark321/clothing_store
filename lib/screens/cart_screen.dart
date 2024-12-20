@@ -86,12 +86,6 @@ class CartScreen extends StatelessWidget {
                       'Total: €${total.toStringAsFixed(2)}',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // TODO: Implémenter le checkout
-                      },
-                      child: const Text('Commander'),
-                    ),
                   ],
                 ),
               ),

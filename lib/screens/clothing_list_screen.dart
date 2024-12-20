@@ -11,7 +11,7 @@ class ClothingListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Vêtements')),
+      appBar: AppBar(title: const Text('Acheter')),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('clothes').snapshots(),
         builder: (context, snapshot) {
