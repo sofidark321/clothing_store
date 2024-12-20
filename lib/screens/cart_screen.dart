@@ -57,7 +57,7 @@ class CartScreen extends StatelessWidget {
                           children: [
                             Text('€${clothing.price.toStringAsFixed(2)}'),
                             IconButton(
-                              icon: const Icon(Icons.delete_outline),
+                              icon: const Icon(Icons.close),
                               onPressed: () => item.reference.delete(),
                             ),
                           ],
