@@ -28,7 +28,7 @@ class _AddClothingScreenState extends State<AddClothingScreen> {
   String _classificationResult = "";
 
   // Define class names corresponding to the model's output
-  final List<String> _categories = ["pants","shirt","shoes","shorts","sneakers","t-shirt" ];
+  final List<String> _categories = ["pantalon","shirt","chaussure","shorts","espadrille","t-shirt" ];
 
   @override
   void initState() {

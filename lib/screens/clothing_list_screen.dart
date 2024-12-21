@@ -30,7 +30,8 @@ class ClothingListScreen extends StatelessWidget {
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
               final doc = snapshot.data!.docs[index];
-              final clothing = Clothing.fromMap(doc.data() as Map<String, dynamic>);
+              final clothing =
+                  Clothing.fromMap(doc.data() as Map<String, dynamic>);
 
               return Card(
                 clipBehavior: Clip.antiAlias,
@@ -38,7 +39,8 @@ class ClothingListScreen extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ClothingDetailScreen(clothing: clothing),
+                      builder: (context) =>
+                          ClothingDetailScreen(clothing: clothing),
                     ),
                   ),
                   child: Column(
@@ -53,24 +55,44 @@ class ClothingListScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,//alignement a gauche
                           children: [
-                            Text(
-                              clothing.title,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,//espace entre size et price
+
+                              children: [
+                              
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,//aligner a gauche
+                                children: [
+                                  Text(
+                                    clothing.title,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    '€${clothing.price.toStringAsFixed(2)}',
+                                    style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              '€${clothing.price.toStringAsFixed(2)}',
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.bold,
+                            
+
+                              Text(
+                                clothing.size,
+                                style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
+                            ])
                           ],
                         ),
                       ),
