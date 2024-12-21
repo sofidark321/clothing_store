@@ -1,8 +1,11 @@
-import 'dart:convert';
-import 'package:clothing_store/base64_image.dart';
-import 'package:clothing_store/models/clothing.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../models/clothing.dart';
+import '../widgets/cart/cart_item_tile.dart';
+import '../widgets/cart/cart_total_bar.dart';
+import '../widgets/cart/empty_cart.dart';
+import '../widgets/loading_indicator.dart';
+import '../theme/app_theme.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -10,7 +13,18 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Panier')),
+      backgroundColor: AppColors.lightBlue.withOpacity(0.1),
+      appBar: AppBar(
+        title: const Text(
+          'Cart',
+          style: TextStyle(
+            color: AppColors.darkBlue,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('cart')
@@ -18,11 +32,16 @@ class CartScreen extends StatelessWidget {
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
+            return const LoadingIndicator();
           }
 
           final items = snapshot.data!.docs;
-          double total = items.fold(
+          
+          if (items.isEmpty) {
+            return const EmptyCart();
+          }
+
+          final total = items.fold<double>(
             0,
             (sum, item) => sum + (item.data() as Map<String, dynamic>)['price'],
           );
@@ -31,6 +50,7 @@ class CartScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
+                  padding: const EdgeInsets.only(top: 16, bottom: 16),
                   itemCount: items.length,
                   itemBuilder: (context, index) {
                     final item = items[index];
@@ -38,57 +58,14 @@ class CartScreen extends StatelessWidget {
                       item.data() as Map<String, dynamic>,
                     );
 
-                    return Card(
-                      margin: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                        leading: SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: Base64Image(
-                            base64String: clothing.imageUrl,
-                            width: 60,
-                            height: 60,
-                          ),
-                        ),
-                        title: Text(clothing.title),
-                        subtitle: Text('Taille: ${clothing.size}'),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text('€${clothing.price.toStringAsFixed(2)}'),
-                            IconButton(
-                              icon: const Icon(Icons.close),
-                              onPressed: () => item.reference.delete(),
-                            ),
-                          ],
-                        ),
-                      ),
+                    return CartItemTile(
+                      clothing: clothing,
+                      onDelete: () => item.reference.delete(),
                     );
                   },
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      blurRadius: 4,
-                      offset: const Offset(0, -2),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Total: €${total.toStringAsFixed(2)}',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                  ],
-                ),
-              ),
+              CartTotalBar(total: total),
             ],
           );
         },
