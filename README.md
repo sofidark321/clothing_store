@@ -1,16 +1,17 @@
 # clothing_store
+applications mobile de shopping , offre un nombre de choix (T-shirts , pantalon , chaussures etc ..),
 
-A new Flutter project.
+# Fonctionnalités
+1 - authentifications ( mail & mots de passe).
+2- ajout de Produits avec detections intelligente ( insertion d'une photo du produit , l'applications detectera   la category automatiquement , insertion du titre , taille , marque et prix ).
+3- collections (les produits sont afficher sur la page Acheter).
+4-filtrage( sur la page Acheter en peux filtrer la liste par category
+5-panier (une fois le produit choisie vous l'ajouter au panier où vous pourer voir le total des prix de tous les produits choisi et par la suite confirme la commande )
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Theme
+palette de couleur utilise :
+  ~ Sky blue : 8ECAE6
+  ~ Blue Green : 219EBC
+  ~ Prussian blue : 023047
+  ~ Selective yellow : FFB703
+  ~ UT orange : FB8500
